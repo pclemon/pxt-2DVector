@@ -28,8 +28,8 @@ namespace Vector{
     //% block="create vector x $x, y $y"
     //% blockSetVariable=vector
     //% weight=100
-    export function createVector(x: Fx8, y: Fx8){
-        return new Vector(x, y)
+    export function createVector(x: number, y: number){
+        return new Vector(Fx8(x), Fx8(y))
     }
 
     //% block="vector one $vector1 plus vector two $vector2"
