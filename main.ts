@@ -1,61 +1,77 @@
-sprites.onOverlap(SpriteKind.Food, SpriteKind.Player, function (sprite, otherSprite) {
-    SnakeFood.destroy()
-    foodFlag = 0
-    info.changeScoreBy(1)
-})
-function createFood () {
-    SnakeFood = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . 2 2 2 2 2 . . . . . . 
-. . . . . 2 2 2 2 2 . . . . . . 
-. . . . . 2 2 2 2 2 . . . . . . 
-. . . . . 2 2 2 2 2 . . . . . . 
-. . . . . 2 2 2 2 2 . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.Food)
-    SnakeFood.setPosition(Math.randomRange(0, scene.screenWidth() - 1), Math.randomRange(0, scene.screenHeight() - 1))
-}
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
-    gameOver = 1
-})
-let SnakeFood: Sprite = null
-let gameOver = 0
-let foodFlag = 0
-foodFlag = 1
-gameOver = 0
-createFood()
-scene.setBackgroundColor(1)
-info.setScore(0)
-let mySprite = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . f f f f f f . . . . . 
-. . . . . f 5 5 5 5 f . . . . . 
-. . . . . f 5 5 5 5 f . . . . . 
-. . . . . f 5 5 5 5 f . . . . . 
-. . . . . f 5 5 5 5 f . . . . . 
-. . . . . f f f f f f . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.Player)
-while (false) {
-    if (foodFlag == 0) {
-        createFood()
+//% blockNamespace=Vector color="#F56600"
+class Vector {
+    x: Fx8;
+    y: Fx8;
+
+    constructor(x: Fx8, y: Fx8){
+        this.x = x;
+        this.y = y;
+    }
+
+    public xCoordinate(): number{
+        return Fx.toInt(this.x);
+    }
+    
+    public yCoordinate(): number{
+        return Fx.toInt(this.y);
+    }
+
+    public print(){
+        console.log(this.x + ", " + this.y);
     }
 }
-controller.moveSprite(mySprite)
+
+//% color="#F56600" 
+//% weight=0
+namespace Vector{
+
+    //% block="create vector x $x, y $y"
+    //% blockSetVariable=vector
+    //% weight=100
+    export function createVector(x: Fx8, y: Fx8){
+        return new Vector(x, y)
+    }
+
+    //% block="vector one $vector1 plus vector two $vector2"
+    export function vectorAdd(vector1: Vector, vector2: Vector): Vector{
+        return new Vector(Fx8(vector1.xCoordinate() + vector2.xCoordinate()), Fx8(vector1.yCoordinate() + vector2.yCoordinate()));
+    }
+
+    //% block="vector one $vector1 minus vector two $vector2"
+    export function vectorSub(vector1: Vector, vector2: Vector): Vector{
+        return new Vector(Fx8(vector1.xCoordinate() - vector2.xCoordinate()), Fx8(vector1.yCoordinate() - vector2.yCoordinate()));
+    }
+
+    //% block="vector one $vector1 times vector two $vector2"
+    export function vectorMultiplication(vector1: Vector, vector2: Vector): Vector{
+        return new Vector(Fx8(vector1.xCoordinate() * vector2.xCoordinate()), Fx8(vector1.yCoordinate() * vector2.yCoordinate()));
+    }
+    //% block="magnitude of vector $vector"
+    export function vectorMagnitude(vector: Vector): number{
+        return Math.sqrt((vector.xCoordinate() * vector.xCoordinate()) + (vector.yCoordinate() * vector.yCoordinate()));
+    }
+
+    //% block="scale vector $vector by $num"
+    export function vectorScale(vector: Vector, num: number): Vector{
+        return new Vector(Fx8(vector.xCoordinate() * num), Fx8(vector.yCoordinate() * num));
+    }
+
+    //% block="dot product of vector one $vector1 and vector two $vector2"
+    export function dotProduct(vector1: Vector, vector2: Vector): number{
+        let mulVec = vectorMultiplication(vector1, vector2);
+        return (mulVec.xCoordinate() + mulVec.yCoordinate());
+    }
+
+    //% block="distance between vector one $vector1 and vector two $vector2"
+    export function euclideanDistance(vector1: Vector, vector2: Vector): number{
+        let tempVec = vectorSub(vector1, vector2);
+        return ((tempVec.xCoordinate() * tempVec.xCoordinate()) + (tempVec.yCoordinate() * tempVec.yCoordinate()));
+    }
+
+    //Print the vector coordinate's via the console
+    //% block="print vector $vectorPrint"
+    export function printVector(vectorPrint: Vector){
+        vectorPrint.print();
+    }
+
+}
