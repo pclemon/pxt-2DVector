@@ -1,27 +1,19 @@
 //% blockNamespace=Vector color="#F56600"
 class Vector {
-    x: number;
-    y: number;
+    x: Fx8;
+    y: Fx8;
 
-    constructor(x: number, y: number){
+    constructor(x: Fx8, y: Fx8){
         this.x = x;
         this.y = y;
     }
 
     public xCoordinate(): number{
-        return this.x;
+        return Fx.toInt(this.x);
     }
     
     public yCoordinate(): number{
-        return this.y;
-    }
-
-    public setX(x: number){
-        this.x = x;
-    }
-
-    public setY(y: number){
-        this.y = y;
+        return Fx.toInt(this.y);
     }
 
     public print(){
@@ -37,22 +29,22 @@ namespace Vector{
     //% blockSetVariable=vector
     //% weight=100
     export function createVector(x: number, y: number){
-        return new Vector(x, y)
+        return new Vector(Fx8(x), Fx8(y));
     }
 
     //% block="vector one $vector1 plus vector two $vector2"
     export function vectorAdd(vector1: Vector, vector2: Vector): Vector{
-        return new Vector(vector1.xCoordinate() + vector2.xCoordinate(), vector1.yCoordinate() + vector2.yCoordinate());
+        return new Vector(Fx8(vector1.xCoordinate() + vector2.xCoordinate()), Fx8(vector1.yCoordinate() + vector2.yCoordinate()));
     }
 
     //% block="vector one $vector1 minus vector two $vector2"
     export function vectorSub(vector1: Vector, vector2: Vector): Vector{
-        return new Vector(vector1.xCoordinate() - vector2.xCoordinate(), vector1.yCoordinate() - vector2.yCoordinate());
+        return new Vector(Fx8(vector1.xCoordinate() - vector2.xCoordinate()), Fx8(vector1.yCoordinate() - vector2.yCoordinate()));
     }
 
     //% block="vector one $vector1 times vector two $vector2"
     export function vectorMultiplication(vector1: Vector, vector2: Vector): Vector{
-        return new Vector(vector1.xCoordinate() * vector2.xCoordinate(), vector1.yCoordinate() * vector2.yCoordinate());
+        return new Vector(Fx8(vector1.xCoordinate() * vector2.xCoordinate()), Fx8(vector1.yCoordinate() * vector2.yCoordinate()));
     }
     //% block="magnitude of vector $vector"
     export function vectorMagnitude(vector: Vector): number{
@@ -61,7 +53,7 @@ namespace Vector{
 
     //% block="scale vector $vector by $num"
     export function vectorScale(vector: Vector, num: number): Vector{
-        return new Vector(vector.xCoordinate() * num, vector.yCoordinate() * num);
+        return new Vector(Fx8(vector.xCoordinate() * num), Fx8(vector.yCoordinate() * num));
     }
 
     //% block="dot product of vector one $vector1 and vector two $vector2"
