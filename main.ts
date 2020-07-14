@@ -1,5 +1,5 @@
 //% blockNamespace=Vector color="#F56600"
-//%groups=['Create', 'Basic Functions', 'Debugging']
+//%groups="['Create', 'Basic Functions', 'Debugging']"
 class Vector {
     x: Fx8;
     y: Fx8;
