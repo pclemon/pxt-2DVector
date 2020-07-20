@@ -68,7 +68,8 @@ namespace Vector{
     //% group="Basic Functions"
     export function euclideanDistance(vector1: Vector, vector2: Vector): number{
         let tempVec = vectorSub(vector1, vector2);
-        return Math.sqrt((Fx.toFloat(Fx.add(Fx.mul(tempVec.x, tempVec.x), Fx.mul(tempVec.y, tempVec.y)))));
+        let temp = Math.abs(Fx.toFloat(Fx.add(Fx.mul(tempVec.x, tempVec.x), Fx.mul(tempVec.y, tempVec.y))));
+        return temp;
     }
 
     //Print the vector coordinate's via the console
