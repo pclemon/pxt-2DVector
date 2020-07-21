@@ -81,12 +81,4 @@ namespace Vector{
         let temp = Math.abs(Fx.toFloat(Fx.add(Fx.mul(tempVec._x, tempVec._x), Fx.mul(tempVec._y, tempVec._y))));
         return temp;
     }
-
-    //Print the vector coordinate's via the console
-    //% block="print vector $vector"
-    //% group="Debugging"
-    export function print(vector: Vector) {
-        vector.printVector();
-    }
-
 }
