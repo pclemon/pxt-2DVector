@@ -82,4 +82,11 @@ namespace Vector{
         return temp;
     }
 
+    //Print the vector coordinate's via the console
+    //% block="print vector $vector"
+    //% group="Debugging"
+    export function print(vector: Vector) {
+        vector.printVector();
+    }
+
 }
