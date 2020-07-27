@@ -7,21 +7,28 @@ namespace Vector{
     export class Vector {
         _x: Fx8;
         _y: Fx8;
-        x: number;
-        y: number;
 
         constructor(_x: Fx8, _y: Fx8) {
             this._x = _x;
             this._y = _y;
-            this.x = Fx.toFloat(_x);
-            this.y = Fx.toFloat(_y);
+        }
+
+        //Converts the _x and _y fields to floats
+        public xToFloat(): number{
+            return Fx.toFloat(this._x);
+
+        }
+
+        public yToFloat(): number{
+            return Fx.toFloat(this._y);
+
         }
 
         //Print the vector coordinate's via the console
         //% block="print vector $this(vector)"
         //% group="Debugging"
         public printVector() {
-            console.log(this.x + ", " + this.y);
+            console.log(this.xToFloat() + ", " + this.yToFloat());
         }
 
         //% block="scale vector $this(vector) by $num"
@@ -29,8 +36,6 @@ namespace Vector{
         public vectorScale(num: number){
             this._x = Fx.mul(this._x, Fx8(num));
             this._y = Fx.mul(this._y, Fx8(num));
-            this.x = Fx.toFloat(this._x);
-            this.y = Fx.toFloat(this._y);
         }
 
         //% block="magnitude of vector $this(vector)"
