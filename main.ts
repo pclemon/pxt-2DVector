@@ -14,21 +14,29 @@ namespace Vector{
         }
 
         //Converts the _x and _y fields to floats
-        public xToFloat(): number{
+        public get x(): number{
             return Fx.toFloat(this._x);
 
         }
 
-        public yToFloat(): number{
+        public get y(): number{
             return Fx.toFloat(this._y);
 
+        }
+
+        public set x(val: number){
+            this._x = Fx8(val);
+        }
+
+        public set y(val: number){
+            this._y = Fx8(val);
         }
 
         //Print the vector coordinate's via the console
         //% block="print vector $this(vector)"
         //% group="Debugging"
         public printVector() {
-            console.log(this.xToFloat() + ", " + this.yToFloat());
+            console.log(this.x + ", " + this.y);
         }
 
         //% block="scale vector $this(vector) by $num"
