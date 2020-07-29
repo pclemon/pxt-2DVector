@@ -33,7 +33,7 @@ namespace Vector{
         }
 
         //Print the vector coordinate's via the console
-        //% block="print vector $this(vector)"
+        //% block="convert vector $this(vector) to a string"
         //% group="Debugging"
         public toString(): string{
             let str = this.x + ", " + this.y;
