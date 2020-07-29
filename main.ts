@@ -35,20 +35,21 @@ namespace Vector{
         //Print the vector coordinate's via the console
         //% block="print vector $this(vector)"
         //% group="Debugging"
-        public printVector() {
-            console.log(this.x + ", " + this.y);
+        public toString(): string{
+            let str = this.x + ", " + this.y;
+            return str;
         }
 
         //% block="scale vector $this(vector) by $num"
         //% group="Basic Functions"
-        public vectorScale(num: number){
+        public scale(num: number){
             this._x = Fx.mul(this._x, Fx8(num));
             this._y = Fx.mul(this._y, Fx8(num));
         }
 
         //% block="magnitude of vector $this(vector)"
         //% group="Basic Functions"
-        public vectorMagnitude(): number {
+        public magnitude(): number {
             return Math.sqrt(Fx.toFloat(Fx.add(Fx.mul(vector._x, vector._x), Fx.mul(vector._y, vector._y))));
         }
     }
@@ -57,25 +58,25 @@ namespace Vector{
     //% blockSetVariable=vector
     //% weight=100
     //% group="Create"
-    export function createVector(x: number, y: number){
+    export function create(x: number, y: number){
         return new Vector(Fx8(x), Fx8(y));
     }
 
     //% block="vector one $vector1 plus vector two $vector2"
     //% group="Basic Functions"
-    export function vectorAdd(vector1: Vector, vector2: Vector): Vector{
+    export function add(vector1: Vector, vector2: Vector): Vector{
         return new Vector(Fx.add(vector1._x,vector2._x), Fx.add(vector1._y, vector2._y));
     }
 
     //% block="vector one $vector1 minus vector two $vector2"
     //% group="Basic Functions"
-    export function vectorSub(vector1: Vector, vector2: Vector): Vector{
+    export function sub(vector1: Vector, vector2: Vector): Vector{
         return new Vector(Fx.sub(vector1._x, vector2._x), Fx.sub(vector1._y, vector2._y));
     }
 
     //% block="vector one $vector1 times vector two $vector2"
     //% group="Basic Functions"
-    export function vectorMultiplication(vector1: Vector, vector2: Vector): Vector{
+    export function multiplication(vector1: Vector, vector2: Vector): Vector{
         return new Vector(Fx.mul(vector1._x, vector2._x), Fx.mul(vector1._y, vector2._y));
     }
 
@@ -83,14 +84,14 @@ namespace Vector{
     //% block="dot product of vector one $vector1 and vector two $vector2"
     //% group="Basic Functions"
     export function dotProduct(vector1: Vector, vector2: Vector): number{
-        let mulVec = vectorMultiplication(vector1, vector2);
+        let mulVec = multiplication(vector1, vector2);
         return (Fx.toFloat((Fx.add(mulVec._x, mulVec._y))));
     }
 
     //% block="distance between vector one $vector1 and vector two $vector2"
     //% group="Basic Functions"
     export function euclideanDistance(vector1: Vector, vector2: Vector): number{
-        let tempVec = vectorSub(vector1, vector2);
+        let tempVec = sub(vector1, vector2);
         let temp = Math.abs(Fx.toFloat(Fx.add(Fx.mul(tempVec._x, tempVec._x), Fx.mul(tempVec._y, tempVec._y))));
         return temp;
     }
