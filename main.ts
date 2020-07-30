@@ -14,29 +14,20 @@ namespace Vector{
         }
 
         //Converts the _x and _y fields to floats
-
-        //% block="get the x value"
-        //% group="Get/Set Vector's Attribute"
         public get x(): number{
             return Fx.toFloat(this._x);
 
         }
 
-        //% block="get the y value"
-        //% group="Get/Set Vector's Attribute"
         public get y(): number{
             return Fx.toFloat(this._y);
 
         }
 
-        //% block="set the x value"
-        //% group="Get/Set Vector's Attribute"
         public set x(val: number){
             this._x = Fx8(val);
         }
 
-        //% block="set the y value"
-        //% group="Get/Set Vector's Attribute"
         public set y(val: number){
             this._y = Fx8(val);
         }
