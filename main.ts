@@ -1,5 +1,5 @@
 //% blockNamespace=Vector color="#F56600"
-//%groups='["Create", "Basic Functions", "Get/Set Vector's Attribute", "Debugging"]'
+//%groups='["Create", "Basic Functions", "Debugging"]'
 
 //% color="#F56600" 
 //% weight=0
