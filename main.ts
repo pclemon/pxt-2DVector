@@ -62,33 +62,33 @@ namespace Vector{
         return new Vector(Fx8(x), Fx8(y));
     }
 
-    //% block="vector one $vector1 plus vector two $vector2"
+    //% block="vector $vector1 plus vector $vector2"
     //% group="Basic Functions"
     export function add(vector1: Vector, vector2: Vector): Vector{
         return new Vector(Fx.add(vector1._x,vector2._x), Fx.add(vector1._y, vector2._y));
     }
 
-    //% block="vector one $vector1 minus vector two $vector2"
+    //% block="vector $vector1 minus vector $vector2"
     //% group="Basic Functions"
     export function sub(vector1: Vector, vector2: Vector): Vector{
         return new Vector(Fx.sub(vector1._x, vector2._x), Fx.sub(vector1._y, vector2._y));
     }
 
-    //% block="vector one $vector1 times vector two $vector2"
+    //% block="vector $vector1 times vector $vector2"
     //% group="Basic Functions"
     export function multiplication(vector1: Vector, vector2: Vector): Vector{
         return new Vector(Fx.mul(vector1._x, vector2._x), Fx.mul(vector1._y, vector2._y));
     }
 
 
-    //% block="dot product of vector one $vector1 and vector two $vector2"
+    //% block="dot product of vector $vector1 and vector  $vector2"
     //% group="Basic Functions"
     export function dotProduct(vector1: Vector, vector2: Vector): number{
         let mulVec = multiplication(vector1, vector2);
         return (Fx.toFloat((Fx.add(mulVec._x, mulVec._y))));
     }
 
-    //% block="distance between vector one $vector1 and vector two $vector2"
+    //% block="distance between vector $vector1 and vector $vector2"
     //% group="Basic Functions"
     export function euclideanDistance(vector1: Vector, vector2: Vector): number{
         let tempVec = sub(vector1, vector2);
