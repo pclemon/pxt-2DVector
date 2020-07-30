@@ -1,59 +1,58 @@
 //% blockNamespace=Vector color="#F56600"
-//%groups='["Create", "Basic Functions", "Debugging"]'
+//%groups='["Create", "Basic Functions", "Accessors", "Debugging"]'
 
 //% color="#F56600" 
 //% weight=0
-namespace Vector{
-    export class Vector {
-        _x: Fx8;
-        _y: Fx8;
+class Vector {
+    _x: Fx8;
+    _y: Fx8;
 
-        constructor(_x: Fx8, _y: Fx8) {
-            this._x = _x;
-            this._y = _y;
-        }
-
-        //Converts the _x and _y fields to floats
-        public get x(): number{
-            return Fx.toFloat(this._x);
-
-        }
-
-        public get y(): number{
-            return Fx.toFloat(this._y);
-
-        }
-
-        public set x(val: number){
-            this._x = Fx8(val);
-        }
-
-        public set y(val: number){
-            this._y = Fx8(val);
-        }
-
-        //Print the vector coordinate's via the console
-        //% block="convert vector $this(vector) to a string"
-        //% group="Debugging"
-        public toString(): string{
-            let str = this.x + ", " + this.y;
-            return str;
-        }
-
-        //% block="scale vector $this(vector) by $num"
-        //% group="Basic Functions"
-        public scale(num: number){
-            this._x = Fx.mul(this._x, Fx8(num));
-            this._y = Fx.mul(this._y, Fx8(num));
-        }
-
-        //% block="magnitude of vector $this(vector)"
-        //% group="Basic Functions"
-        public magnitude(): number {
-            return Math.sqrt(Fx.toFloat(Fx.add(Fx.mul(this._x, this._x), Fx.mul(this._y, this._y))));
-        }
+    constructor(_x: Fx8, _y: Fx8) {
+        this._x = _x;
+        this._y = _y;
     }
 
+    //Converts the _x and _y fields to floats'
+    public get x(): number{
+        return Fx.toFloat(this._x);
+
+    }
+
+    public get y(): number{
+        return Fx.toFloat(this._y);
+
+    }
+
+    public set x(val: number){
+        this._x = Fx8(val);
+    }
+
+    public set y(val: number){
+        this._y = Fx8(val);
+    }
+
+    //Print the vector coordinate's via the console
+    //% block="convert vector $this(vector) to a string"
+    //% group="Debugging"
+    public toString(): string{
+        let str = this.x + ", " + this.y;
+        return str;
+    }
+
+    //% block="scale vector $this(vector) by $num"
+    //% group="Basic Functions"
+    public scale(num: number){
+        this._x = Fx.mul(this._x, Fx8(num));
+        this._y = Fx.mul(this._y, Fx8(num));
+    }
+
+    //% block="magnitude of vector $this(vector)"
+    //% group="Basic Functions"
+    public magnitude(): number {
+        return Math.sqrt(Fx.toFloat(Fx.add(Fx.mul(this._x, this._x), Fx.mul(this._y, this._y))));
+    }
+}
+namespace Vector{
     //% block="create vector x $x, y $y"
     //% blockSetVariable=vector
     //% weight=100
@@ -94,5 +93,17 @@ namespace Vector{
         let tempVec = sub(vector1, vector2);
         let temp = Math.abs(Fx.toFloat(Fx.add(Fx.mul(tempVec._x, tempVec._x), Fx.mul(tempVec._y, tempVec._y))));
         return temp;
+    }
+
+    //% block="returns vector's $vector x value"
+    //% group="Accessors"
+    export function getX(vector: Vector){
+        return vector.x;
+    }
+
+    //% block="returns vector's $vector y value"
+    //% group="Accessors"
+    export function getY(vector: Vector){
+        return vector.y;
     }
 }
