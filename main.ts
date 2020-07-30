@@ -106,4 +106,16 @@ namespace Vector{
     export function getY(vector: Vector){
         return vector.y;
     }
+
+    //% block="changes vector's $vector x value to $val"
+    //% group="Accessors"
+    export function setX(vector: Vector, val: number){
+        vector.x = val;
+    }
+
+    //% block="changes vector's $vector y value to $val"
+    //% group="Accessors"
+    export function setY(vector: Vector, val: number){
+        vector.y = val;
+    }
 }
