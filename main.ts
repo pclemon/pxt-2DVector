@@ -50,7 +50,7 @@ namespace Vector{
         //% block="magnitude of vector $this(vector)"
         //% group="Basic Functions"
         public magnitude(): number {
-            return Math.sqrt(Fx.toFloat(Fx.add(Fx.mul(vector._x, vector._x), Fx.mul(vector._y, vector._y))));
+            return Math.sqrt(Fx.toFloat(Fx.add(Fx.mul(this._x, this._x), Fx.mul(this._y, this._y))));
         }
     }
 
